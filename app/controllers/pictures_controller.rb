@@ -54,17 +54,20 @@ class PicturesController < ApplicationController
     render :new if @picture.invalid?
   end
 
-    private
+  def map
+  end
 
-    def pic_params
-      params.require(:picture).permit(:content, :image)
-    end
+  private
 
-    def set_pic
-      @picture = Picture.find(params[:id])
-    end
+  def pic_params
+    params.require(:picture).permit(:content, :image, :image_cache, :latitude, :longitude)
+  end
 
-    def set_user
-      redirect_to pictures_path unless @picture.user_id == current_user.id
-    end
+  def set_pic
+    @picture = Picture.find(params[:id])
+  end
+
+  def set_user
+    redirect_to pictures_path unless @picture.user_id == current_user.id
+  end
 end

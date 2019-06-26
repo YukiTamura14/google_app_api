@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'pictures#top'
+  get 'map', to: 'pictures#map'
 
   resources :pictures do
     collection do

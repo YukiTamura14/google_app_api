@@ -13,6 +13,12 @@
   <div class = "pic_content">
     <%= form.label :content %>
     <%= form.text_field :content, class: "form-control" %>
+    <%= form.label :latitude %>
+    <%= form.text_field :latitude, class: "form-control" %>
+    <%= form.label :longitude %>
+  　<%= form.text_field :longitude, class: "form-control" %>
+    <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
     <%= form.submit :class => "button" %>
   </div>
 <% end %>

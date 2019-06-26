@@ -1,45 +1,23 @@
 <div class="container_fluid">
-  <div class="row">
-    <div class="col-xs-12 contents card-img-top">
-      <div class="card-body">
-        <p class="card-text"><%= @picture.user.name %><br><%= @picture.content %></p></p>
+  <div class="col-xs-12 col-sm-6 col-md-3 contents card-img-top">
+    <%=image_tag (@picture.image.url) %>
+    <div class="card-body">
+      <p class="card-text"><%=@picture.user.name %><br><%=@picture.content %></p></p>
         <% unless @picture.user == current_user %>
           <% if @favorite.present? %>
-            <%= link_to "お気に入りを解除する", favorite_path(id: @favorite.id), method: :delete %>
+            <%= link_to "お気に入りを解除する", favorite_path(id:@favorite.id), method: :delete %>
           <% else %>
-            <%= link_to "お気に入りする", favorites_path(picture_id: @picture.id), method: :post %>
+            <%= link_to "お気に入りする", favorites_path(picture_id:@picture.id), method: :post %>
           <% end %>
-        <% end %>
+         <% end %>
       </div>
     </div>
+
     <div class="col-xs-12">
-      <div id="map" style="width: 100%; height: 500px;"></div>
+      <div id="map" style="width: 100%; height: 500px; background-color:orange"></div>
     </div>
   </div>
-
 </div>
-<script>
-  // マップを初期化する
-  function initMap() {
 
-    const uluru = { lat: 35.655833, lng: 139.694482 };
-    // マップの中心を設定する
-    const map = new google.maps.Map(
-      document.getElementById('map')
-      , {
-        zoom: 14,
-        center: uluru
-      }
-    );
-    // マーカーをつける
-    new google.maps.Marker({ position: uluru, map: map });
-  }
-</script>
-<!--Load the API from the specified URL
-* The async attribute allows the browser to render the page while the API loads
-* The key parameter will contain your own API key (which is not needed for this tutorial)
-* The callback parameter executes the initMap() function
--->
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
-</script>
+
+

@@ -3,17 +3,23 @@
     <div class="card">
       <%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
         <div class="col-xs-12 col-sm-6 col-md-3 contents card-img-top">
-          <%= form.hidden_field :content %>
+          <%= image_tag(@picture.image.url) %>
+          <%= form.hidden_field :image_cache %><br>
         <div class="card-body">
           <p class="card-text">content:<%= @picture.content %></p>
+          <%= form.hidden_field :content %>
+          <p class="card-text">latitude:<%= @picture.latitude %></p>
+          <%= form.hidden_field :latitude, class: "form-control" %>
+          <p class="card-text">longitude:<%= @picture.longitude %></p>
+          <%= form.hidden_field :longitude, class: "form-control" %>
         </div>
         <%= form.submit :class => "btn btn-primary" %>
         </div>
       <% end %>
     </div>
   </div>
-
   <%= form_with(model: @picture, url: new_picture_path, local: true, method: "get") do |form| %>
     <%= form.hidden_field :content %>
+    <%= form.hidden_field :image_cache %>
     <%= form.submit "戻る", name: "back", :class => "btn btn-danger" %>
   <% end %>

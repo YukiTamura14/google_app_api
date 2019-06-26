@@ -9,14 +9,17 @@
   <div class="row card">
     <% @pictures.each do |picture| %>
       <div class="col-xs-12 col-sm-6 col-md-3 contents card-img-top">
-        <div class="card-body">
-          <p class="card-text"><%= picture.content.html_safe %></p>
-          <%= link_to "詳細", picture_path(picture.id) %>
-          <% if picture.user_id == current_user.id %>
-            <%= link_to "編集", edit_picture_path(picture.id) %>
-            <%= link_to "削除", picture_path(picture.id), method: :delete, data: {confirm: "本当に削除しますか？"} %>
-          <% end %>
-        </div>
+      <%= image_tag(picture.image.url) if picture.image.url %>
+      <div class="card-body">
+        <p class="card-text"><%= picture.content %></p>
+        <p class="card-text"><%= picture.latitude %></p>
+        <p class="card-text"><%= picture.longitude %></p>
+        <%= link_to "詳細", picture_path(picture.id) %>
+        <% if picture.user_id == current_user.id %>
+          <%= link_to "編集", edit_picture_path(picture.id) %>
+          <%= link_to "削除", picture_path(picture.id), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+        <% end %>
+      </div>
       </div>
     <% end %>
   </div>

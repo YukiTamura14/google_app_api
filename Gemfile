@@ -18,6 +18,9 @@ gem 'mini_magick'
 gem 'font-awesome-rails'
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'gmaps4rails'  # railsでGoogle mapを使えるようにする
+gem 'geocoder'     # 地名から緯度経度を引けるようにする
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
