@@ -6,7 +6,7 @@
 
 # Ignore bundler config.
 /.bundle
-/vendor/bundle
+/vendor/bundle/ruby/2.6.0
 /public
 # Ignore all logfiles and tempfiles.
 /log/*
