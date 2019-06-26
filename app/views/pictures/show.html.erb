@@ -1,6 +1,6 @@
 <div class="container_fluid">
   <div class="col-xs-12 col-sm-6 col-md-3 contents card-img-top">
-    <%=image_tag (@picture.image.url) %>
+    <%=image_tag (@picture.image.url) if @picture.image.url %>
     <div class="card-body">
       <p class="card-text"><%=@picture.user.name %><br><%=@picture.content %></p></p>
         <% unless @picture.user == current_user %>
